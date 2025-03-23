@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Prediction</title>
+</head>
+<body>
+    <h2>Stock Profitability Prediction</h2>
+    <form method="post">
+        <label for="stock_symbol">Enter Stock Symbol (e.g., HDFCBANK.NS):</label>
+        <input type="text" id="stock_symbol" name="stock_symbol" required>
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if tables %}
+    <h3>Predicted Profitability for {{ symbol }}</h3>
+    <div style="overflow-x:auto;">
+        {{ tables[0]|safe }}
+    </div>
+{% endif %}
+
+
+    {% if error %}
+        <p style="color:red;">{{ error }}</p>
+    {% endif %}
+</body>
+</html>
