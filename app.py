@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import yfinance as yf
 import joblib
+import os
 
 # Load trained model
 model = joblib.load("stock_trading_model.pkl")
@@ -152,7 +153,9 @@ def index():
     return render_template("index.html")
 
 
+
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 10000))  # Default to 10000 if PORT is not set
+    app.run(host="0.0.0.0", port=port)
 
 
